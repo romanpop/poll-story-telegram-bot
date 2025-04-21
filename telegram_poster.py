@@ -17,6 +17,7 @@ BOT_TOKEN = "xxxx"  # <-- PASTE YOUR BOT TOKEN HERE
 CHANNEL_ID = "@denissexy" # Or "-100xxxxxxxxxx" for private channels/groups
 # Use environment variable for API key, fallback to placeholder
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "xxxx") # <-- Modify/Add
+OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL") # <-- Add OPENAI_BASE_URL
 
 # Story settings
 INITIAL_STORY_IDEA = """
@@ -48,7 +49,7 @@ if OPENAI_API_KEY and OPENAI_API_KEY != "YOUR_OPENAI_API_KEY":
     try:
         # Ensure you have set the OPENAI_API_KEY environment variable
         # or replace the placeholder directly above (less secure)
-        openai_client = OpenAI(api_key=OPENAI_API_KEY)
+        openai_client = OpenAI(api_key=OPENAI_API_KEY, base_url=OPENAI_BASE_URL) # Modified line
         logging.info("OpenAI client initialized successfully.")
     except Exception as e:
          logging.error(f"Failed to initialize OpenAI client: {e}")
